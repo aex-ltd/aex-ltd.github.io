@@ -1443,6 +1443,10 @@ text-align: justify;
     }
 }
 @media screen and (max-width: 900px) {
+    .content-container{
+        margin: auto;
+        width: 90%;
+    }
     .company-profile  .first-content, .company-profile .second-content {
         width: 80%;
     }
