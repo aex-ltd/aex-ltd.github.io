@@ -819,6 +819,13 @@ header{
         margin-left: 21px;
     }
 }
+@media (max-width: 400px) {
+    .image-overlay {
+        width: 90%; /* Make sure it covers the entire width of the parent */
+        height: 300px; /* Make sure it covers the entire height of the parent */
+        margin-left: 19px;
+    }
+}
 /* image section ends  */
 
 
