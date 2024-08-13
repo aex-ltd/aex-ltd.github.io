@@ -659,6 +659,11 @@ header{
     .aex-team .aex-team-div .aex-div p{
         font-size: 18px;
     }
+    .partners .logos .logo .aaa-img{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 /* ===================== teams and partners ends ============== */
 
