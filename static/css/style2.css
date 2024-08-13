@@ -1,0 +1,1487 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* =========== header/nav ================== */
+/* General styles for ul and a tags */
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* Header styles */
+header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1000;
+    height: auto;
+    padding: 2px;
+    border-bottom: 1px solid #1B5191;
+    background-color: white;
+}
+
+.header-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    margin-top: -15px;
+}
+
+.header-container .logo-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.header-container .logo-container img {
+    width: 140px;
+    height: 70px;
+    margin: 8px;
+}
+
+.header-container .nav-btn .nav-links {
+    flex: 3;
+    margin-top: 30px;
+}
+
+.header-container .nav-btn .nav-links > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-container .nav-btn .nav-links .nav-link {
+    position: relative;
+}
+
+.header-container .nav-btn .nav-links .nav-link > a {
+    line-height: 3rem;
+    color: #1B5191;
+    font-weight: bold;
+    padding: 0 .8rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    transition: none; /* Remove any transition effect */
+}
+
+/* Remove any transform on hover */
+.header-container .nav-btn .nav-links .nav-link:hover > a {
+    transform: none;
+}
+
+.header-container .nav-btn .nav-links .nav-link .dropdown {
+    position: absolute;
+    top: 100%;
+    padding: 8px;
+    margin-left: -55px;
+    width: 300px;
+    transform: translateY(10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease; /* Only transition opacity */
+    z-index: 1100;
+}
+
+.header-container .nav-btn .nav-links .nav-link .dropdown ul {
+    position: relative;
+}
+
+.header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link {
+    position: relative;
+}
+
+.header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link > a {
+    display: flex;
+    background-color: #1B5191;
+    color: white;
+    padding: 3px;
+    font-size: 15px;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #1B5191;
+}
+
+.header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link:hover > a {
+    background-color: white;
+    color: #1B5191;
+}
+
+.header-container .nav-btn .nav-links .nav-link:hover > .dropdown,
+.header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link:hover > .dropdown {
+    transform: translateY(0); /* Ensure dropdown stays in place */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.header-container .hamburger-menu-container {
+    flex: 1;
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-container .hamburger-menu {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-container .hamburger-menu div {
+    width: 1.6rem;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #1B5191;
+    position: relative;
+    z-index: 1001;
+    transition: background-color 0.5s ease;
+    margin: 7px;
+}
+
+.header-container .hamburger-menu div:before,
+.header-container .hamburger-menu div:after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: #1B5191;
+    border-radius: 3px;
+    transition: transform 0.5s ease;
+    margin-bottom: 4px;
+}
+
+.header-container .hamburger-menu div:before {
+    transform: translateY(-7px);
+}
+
+.header-container .hamburger-menu div:after {
+    transform: translateY(7px);
+}
+
+.header-container #check {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    width: 2.5rem;
+    height: 2.5rem;
+    z-index: 90000;
+    cursor: pointer;
+    opacity: 0;
+    display: none;
+}
+
+.header-container #check:checked ~ .hamburger-menu-container .hamburger-menu div {
+    background-color: transparent;
+}
+
+.header-container #check:checked ~ .hamburger-menu-container .hamburger-menu div:before {
+    transform: rotate(0deg);
+}
+
+.header-container #check:checked ~ .hamburger-menu-container .hamburger-menu div:after {
+    transform: rotate(0deg);
+}
+
+/* Animation keyframes */
+@keyframes animation {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 920px) {
+    .header-container .hamburger-menu-container {
+        display: flex;
+    }
+
+    .header-container #check {
+        display: block;
+    }
+
+    .header-container .logo-container img {
+        width: 90px;
+        height: 40px;
+    }
+
+    .header-container .nav-btn {
+        position: absolute;
+        height: calc(100vh - 3rem);
+        top: 4rem;
+        left: 0;
+        width: 100%;
+        background-color: #1B5191;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform 0.65s ease;
+        z-index: 1200;
+    }
+
+    .header-container #check:checked ~ .nav-btn {
+        transform: translateX(0);
+    }
+
+    .header-container #check:checked ~ .nav-btn .nav-link,
+    .header-container #check:checked ~ .nav-btn .log-sign {
+        animation: animation 0.5s ease forwards var(--i);
+    }
+
+    .header-container .nav-btn .nav-links {
+        flex: initial;
+        width: 100%;
+    }
+
+    .header-container .nav-btn .nav-links > ul {
+        flex-direction: column;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link {
+        width: 100%;
+        opacity: 0;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link > a {
+        line-height: 1;
+        padding: 3px;
+        margin: 5px;
+        color: white;
+        font-weight: bold;
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link:hover > a {
+        width: 40%;
+        color: white;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link .dropdown {
+        position: initial;
+        top: initial;
+        left: initial;
+        transform: initial;
+        opacity: 1;
+        pointer-events: auto;
+        width: auto;
+        padding: 4px;
+        display: none;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link:hover > .dropdown,
+    .header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link:hover > .dropdown {
+        display: block;
+        margin-left: -50px;
+    }
+
+    .header-container .nav-btn .nav-links .dropdown .dropdown-link:not(:nth-last-child(2)) {
+        border-bottom: none;
+    }
+
+    .header-container .nav-btn .nav-links .dropdown .dropdown-link:hover > a {
+        background-color: white;
+        margin: 4px;
+        width: auto;
+        color: #1B5191;
+        font-size: 14px;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link > a > i {
+        font-size: 1.1rem;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link .dropdown i {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .logo-container img {
+        width: 60px;
+        height: 40px;
+    }
+}
+
+/* =============== header/nav ends ==============  */
+
+/* =========== slideshow ================ */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    height: 85vh; /* Set the height of the slideshow to cover the viewport height */
+    margin: auto;
+    overflow: hidden;
+    z-index: 100; 
+}
+
+.slideshow-container .slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+.slideshow-container .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the images cover the entire slide */
+    vertical-align: middle;
+    opacity: 0.9; /* Make images a bit brighter */
+}
+
+.slideshow-container .slide .slide-text {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.6); 
+    border-left: 5px solid #1B5191; /* Add a left border with a professional color */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Add some shadow for a better look */
+    max-width: 40%;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    z-index: 2; /* Ensure text is above the image */
+    text-align: center;
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromCenter {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slideshow-container .slide:nth-child(1) {
+    animation-name: slideFromRight;
+}
+
+.slideshow-container .slide:nth-child(2) {
+    animation-name: slideFromCenter;
+}
+
+.slideshow-container .slide:nth-child(3) {
+    animation-name: fade;
+}
+
+.slideshow-container .slide:nth-child(4) {
+    animation-name: slideFromRight; /* Add more animations if needed */
+}
+
+.slideshow-container .slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); /* Lighter gradient */
+    z-index: 1;
+}
+
+@media (max-width: 700px) {
+    .slideshow-container {
+        height: 45vh;
+    }
+    .slideshow-container .slide .slide-text {
+        margin-top: -20px;
+        font-size: 15px;
+    }
+}
+/* ===================== slide show ends ================= */
+
+/* ============= pre-about ================== */
+.pre-about{
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.pre-about .pre-about-div {
+    width: 65%;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+.pre-about .pre-about-div h2{
+    font-weight: 100;
+    font-size: 50px;
+    color: rgb(51, 50, 50);
+    margin-top: -12px;
+    
+}
+.pre-about .pre-about-div h4 {
+    font-weight: 100;
+    font-size: 25px;
+    color: rgb(51, 50, 50);
+    margin-top: 50px;
+}
+.pre-about .pre-about-div p{
+    font-weight: 100;
+    font-size: 18px;
+    color: rgb(46, 45, 45);
+    text-align: justify;
+    
+}
+@media (max-width:1500px) {
+    .pre-about .pre-about-div h2{
+        font-size: 40px;
+    }
+}
+@media (max-width:1050px) {
+    .pre-about .pre-about-div h2{
+        font-size: 35px;
+    }
+}
+@media (max-width:950px) {
+    .pre-about{
+        width:100%;
+        margin:auto;
+        text-align:center;
+        padding:8px;
+    }
+    .pre-about .pre-about-div {
+        width: 90%;
+        padding: 6px;
+        margin: auto;
+        text-align: center;
+    }
+    .pre-about .pre-about-div h2{
+        font-size: 30px;
+        margin-top: 14px;
+    }
+        .pre-about .pre-about-div p{
+        margin-left: -10px;
+        font-size:16px;
+    }
+}
+@media (max-width:700px) {
+    .pre-about .pre-about-div {
+        width: 90%;
+        padding: 6px;
+        margin: auto;
+        text-align: center;
+    }
+    .pre-about .pre-about-div h2{
+        font-size: 30px;
+    }
+    .pre-about .pre-about-div h4{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+}
+/* =============== pre-about ends =================== */
+
+/* ================== teams and partners ================ */
+.teams {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: -30px;
+}
+
+.teams .teams-div {
+    width: 65%;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.teams .teams-div h3 {
+    font-weight: 100;
+    font-size: 35px;
+    color: rgb(51, 50, 50);
+    margin-top: 50px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.teams .teams-div .team {
+    flex: 1 1 200px; /* allows the team divs to grow and shrink, with a minimum width of 200px */
+    margin: 10px; /* Adds some space between the team divs */
+}
+.teams .teams-div .team .team-title{
+    font-size: 18px;
+    font-weight: 100;
+}
+.teams .teams-div .team a {
+    color: black;
+}
+.teams .teams-div .team img {
+    width: 220px;
+    height: 180px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the transform property */
+}
+.teams .teams-div .team img:hover {
+    transform: scale(0.95); /* Zoom out slightly on hover */
+}
+@media (max-width:945px) {
+    .teams{
+        text-align: center;
+        margin:auto;
+        width:100%;
+        /* background-color: #1B5191; */
+    }
+    .teams .teams-div{
+        width: 80%;
+        text-align: center;
+        margin:auto;
+        /* background-color: #333; */
+        margin-left: 20px;
+    }
+    .teams .teams-div h3 {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+    .teams .teams-div .team img {
+        width: 200px;
+        height: 120px;
+    }
+}
+/* ===================== teams and partners ends ============== */
+
+/* ================== clients ================ */
+.clients {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: -30px;
+}
+
+.clients .clients-div {
+    width: 65%;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.clients .clients-div h3 {
+    font-weight: 100;
+    font-size: 35px;
+    color: rgb(51, 50, 50);
+    margin-top: 50px;
+    width: 100%;
+    font-weight: 600;
+}
+
+.clients .clients-div .client {
+    flex: 1 1 200px; /* allows the team divs to grow and shrink, with a minimum width of 200px */
+    margin: 10px; /* Adds some space between the team divs */
+}
+.clients .clients-div .client a {
+    color: black;
+}
+.clients .clients-div .client p {
+    font-size: 19px;
+    font-weight: 100;
+}
+.clients .clients-div .client img{
+    width: 220px;
+    height: 180px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; 
+}
+.clients .clients-div .client img:hover{
+    transform: scale(0.95); /* Zoom out slightly on hover */
+}
+
+/* @media (max-width:700px) {
+    .clients {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        margin-top: -30px;
+    }
+    
+    .clients .clients-div {
+        width: 80%;
+        padding: 10px;
+        margin: auto;
+        text-align: center;
+    }
+    .clients .clients-div .client{
+        width: 90%;
+        text-align: center;
+    }
+    .clients .clients-div .client img{
+        width: 100%;
+        height: 160px;
+    }
+    
+} */
+@media (max-width:945px) {
+    .clients{
+        text-align: center;
+        margin:auto;
+        width:100%;
+    }
+    .clients .clients-div{
+        width: 80%;
+        text-align: center;
+        margin:auto;
+        margin-left: 20px;
+    }
+    .clients .clients-div h3 {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+    .clients .clients-div .client img {
+        width: 200px;
+        height: 120px;
+    }
+}
+/* @media (max-width:700px) {
+    .clients {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        padding: 8px;
+        margin-top: -30px;
+    }
+    
+    .clients .clients-div {
+        width: 98%;
+        padding: 8px;
+        margin: auto;
+        text-align: center;
+    }
+    .clients .clients-div .client{
+        width: 90%;
+        text-align: center;
+        margin:auto;
+    }
+    .clients .clients-div .client img {
+        width: 80%;
+        height: 160px;
+    }
+} */
+/* ===================== clients ends ============== */
+
+/* =============== motto =========================== */
+.motto {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Adjust height as needed */
+}
+
+.motto .motto-div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.motto .motto-div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), hwb(0 99% 0% / 0.7)), /* Faded effect */
+                url('../images/slide11.jpeg') center/cover no-repeat; /* Replace with your image URL */
+    z-index: -1; /* Ensure it is behind any content within .motto-div */
+}
+
+.motto .motto-div .motto-div-text{
+    width: 60%;
+    height: 250px;
+    margin: auto;
+
+}
+.motto .motto-div .motto-div-text p {
+    font-size: 45px;
+    color: #1B5191;
+    word-spacing: 8px;
+    margin-top: 100px;
+}
+@media (max-width:940px) {
+    .motto .motto-div .motto-div-text p {
+        font-size: 35px;
+        margin-top: 100px;
+    }
+}
+@media (max-width:700px) {
+    .motto .motto-div .motto-div-text p {
+        font-size: 35px;
+        margin-top: 100px;
+    }
+}
+@media (max-width:500px) {
+    .motto .motto-div .motto-div-text p {
+        font-size: 25px;
+        margin-top: 60px;
+    }
+    .motto {
+        position: relative;
+        width: 100%;
+        height: 200px; /* Adjust height as needed */
+    }
+}
+/* ===================== motto ends ================= */
+/* ================== slider container ============== */
+
+.slider-container {
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+    margin: auto;
+    text-align: center;
+}
+
+.slider-container h3 {
+    font-weight: 100;
+    font-size: 30px;
+    color: rgb(51, 50, 50);
+    margin-top: 50px;
+    width: 100%;
+    font-weight: 600;
+    /* text-align: justify; */
+}
+
+.slider-container .slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    will-change: transform;
+}
+
+.slider-container .slider-wrapper .slider-item {
+    flex: 0 0 250px;
+    height: 250px;
+    margin-right: 10px;
+    width: 200px;
+    /* border: 1px solid black; */
+}
+
+.slider-container .slider-wrapper .slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-container .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.slider-container .left-button {
+    left: 10px;
+}
+
+.slider-container .right-button {
+    right: 10px;
+}
+
+/* =============== slider container ends ================= */
+/* ================= footer =================== */
+.footer {
+    /* background-color: #333; */
+    /* color: white; */
+    text-align: center;
+    padding: 10px 0;
+    margin-top: -40px;
+    bottom: 0;
+    width: 100%;
+    /* height: 200px; */
+}
+
+.footer .top-footer{
+    width: 100%;
+    height: 50px;
+    background-color: #1B5191;
+    margin-top: 120px;
+    /* text-align: justify; */
+    display: flex;
+    
+}
+.footer .top-footer .footer-contact{
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    margin-top: 15px;
+    font-weight: 500;
+    color: white;
+}
+.footer .top-footer .footer-icon{
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+.footer .top-footer .footer-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 5px;
+    padding: 2px;
+
+}
+.footer .copyright{
+    float: left;
+    color: black;
+    margin-top: 110px;
+}
+.footer .footer-logo{
+    float: right;
+    width: 150px;
+    height: 90px;
+    margin-top: 40px;
+}
+
+@media (max-width:700px) {
+    .footer .copyright{
+        float: left;
+        color: black;
+        margin-top: 110px;
+        font-size: 12px;
+    }
+    .footer .footer-logo{
+        float: right;
+        width: 100px;
+        height: 80px;
+        margin-top: 50px;
+    }  
+    .footer .top-footer .footer-icon img{
+        width: 20px;
+        height: 20px;
+        margin-top: 10px;
+    }
+}
+/* ==================== footer ends =================== */
+
+/* ============= company section ============== */
+.parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    width: 100%;
+    height: auto; /* Full viewport height */
+    padding: 10px;
+}
+
+.parent-container .company-profile {
+    display: flex;
+    justify-content: center; /* Centers the flex items inside company-profile */
+    width: 90%;
+    margin: 0 auto; /* Centers company-profile horizontally */
+}
+
+.parent-container .company-profile .profile-one,
+.parent-container .company-profile .profile-two {
+    flex-basis: 1100px; /* Sets the initial width */
+    margin: 10px; /* Adds some space around the divs */
+    height: auto;
+    background-color: white;
+    padding: 8px;
+}
+.parent-container .company-profile .profile-one .company-profile-text,
+.parent-container .company-profile .profile-two .company-profile-text2{
+    text-align: justify;
+    margin-top: -32px;
+}
+.parent-container .company-profile .profile-two{
+    border-left: 1px solid rgb(206, 206, 206);
+}
+.parent-container .company-profile .profile-one .company-profile-text h3{
+    color: gray;
+}
+.parent-container .company-profile .profile-one .company-profile-text p{
+    color: gray;
+    word-spacing: 3px;
+}
+
+.parent-container .company-profile .profile-one .quote-div {
+    border: transparent;
+    text-align: center;
+    padding: 20px;
+    width: 370px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-top-left-radius: 110px;
+    border-bottom-right-radius: 110px;
+    background-color: #1B5191;
+    color: white;
+}
+.parent-container .company-profile .profile-one .company-profile-text{
+    text-align: justify;
+    margin-top: -32px;
+}
+.parent-container .company-profile .profile-one .company-profile-text h4{
+    color: gray;
+}
+
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-image{
+    width: 250px;
+    height: 300px;
+    margin-top: 25px;
+}
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-image img{
+    width: 100%;
+    height: 100%;
+}
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-text{
+    width: 100%;
+    padding: 4px;
+    margin-top: 3px;
+    /* background-color: #1B5191; */
+}
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-text h4{
+    margin-top: 2px;
+    font-size: 18px;
+}
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-text .md{
+    margin-top: -5px;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+}
+.parent-container .company-profile .profile-two .company-profile-text2 .individual-text p{
+    color: gray;
+}
+.parent-container .company-profile .profile-two .quote-div{
+    border: transparent;
+    text-align: center;
+    padding: 30px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-top-left-radius: 110px;
+    border-bottom-right-radius: 110px;
+    background-color: #1B5191;
+    color: white;
+}
+@media (max-width: 900px) {
+    .parent-container {
+        display: block;
+        margin-top: 0;
+        width: 100%;
+        margin: auto;
+        height: auto;
+    }
+    .parent-container .company-profile {
+        display: block;
+        width: 90%;
+        height: auto;
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+    }
+    .parent-container .company-profile .profile-one,
+    .parent-container .company-profile .profile-two {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 3px;
+    }
+    .parent-container .company-profile .profile-one .quote-div{
+        border: transparent;
+        text-align: center;
+        padding: 20px;
+        width: 300px;
+        color: white;
+    }
+    .parent-container .company-profile .profile-two{
+        border: transparent;
+    }
+
+}
+
+/* ================ company section ends ============ */
+
+
+/* ============= company section2 ============== */
+.parent-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    width: 100%;
+    height: auto; /* Full viewport height */
+}
+
+.parent-container2 .company-profile2 {
+    display: flex;
+    justify-content: center; /* Centers the flex items inside company-profile */
+    width: 90%;
+    margin: 0 auto; /* Centers company-profile horizontally */
+}
+
+.parent-container2 .company-profile2 .profile-one2,
+.parent-container2 .company-profile2 .profile-two2 {
+    flex-basis: 1100px; /* Sets the initial width */
+    margin: 10px; /* Adds some space around the divs */
+    height: auto;
+    background-color: white;
+    padding: 8px;
+
+}
+.parent-container2 .company-profile2 .profile-two2{
+    border-left: 1px solid rgb(206, 206, 206);
+}
+.parent-container2 .company-profile2 .profile-one2 .company-profile-text,
+.parent-container2 .company-profile2 .profile-two2 .company-profile-text2{
+    text-align: justify;
+    margin-top: -32px;
+}
+
+.parent-container2 .company-profile2 .profile-one2 .company-profile-text p{
+    color: gray;
+    word-spacing: 3px;
+}
+.parent-container2 .company-profile2 .profile-one2 .quote-div2 {
+    border: transparent;
+    text-align: center;
+    padding: 25px;
+    width: 420px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    border-top-left-radius: 110px;
+    border-bottom-right-radius: 110px;
+    background-color: #1B5191;
+    color: white;
+}
+.parent-container2 .company-profile2 .profile-one2 .profile-one2-icon{
+    float: right;
+    margin-right: 40px;
+}
+.parent-container2 .company-profile2 .profile-one2 .profile-one2-icon p a img{
+    width: 30px;
+    height: 30px;
+}
+.parent-container2 .company-profile2 .profile-one2 .profile-one2-icon p{
+    /* background-color: #1B5191; */
+    padding: 5px;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 30px;
+}
+.profile-one3{
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .parent-container2 .company-profile2 .profile-one2{
+        width: 250px;
+    }
+    .parent-container2 .company-profile2 .profile-one2 .quote-div2{
+        width: 250px;
+    }
+}
+
+@media (max-width: 750px) {
+    .parent-container2 {
+        display: block;
+        margin-top: 0;
+        width: 100%;
+        margin: auto;
+    }
+    .parent-container2 .company-profile2 {
+        display: block;
+        width: 90%;
+        height: auto;
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+        align-items: center;
+    }
+    .parent-container2 .company-profile2 .profile-two2 {
+        width: 90%;
+        height: auto;
+        margin: auto;
+        margin-top: 3px;
+        border: transparent;
+    }
+    .parent-container2 .company-profile2 .profile-one2 {
+        display: none;
+    }
+    .parent-container2 .company-profile2 .profile-one2 .quote-div2{
+        border: transparent;
+        text-align: center;
+        padding: 20px;
+        width: 300px;
+        color: white;
+    }
+    .profile-one3{
+        display: block;
+    }
+    .parent-container2 .company-profile2 .profile-one3 .quote-div2{
+        border: transparent;
+        text-align: center;
+        padding: 20px;
+        width: 300px;
+        box-sizing: border-box;
+        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        border-top-left-radius: 110px;
+        border-bottom-right-radius: 110px;
+        background-color: #1B5191;
+        color: white;
+    }
+
+}
+
+
+/* ================ company section2 ends ============ */
+
+
+/* ================== header image ===================== */
+.header-image {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    z-index: 1;  
+}
+
+.header-image img {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+.header-image .header-image-text {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    transform: translateY(-50%);
+    color: white; /* Text color */
+    font-size: 34px; /* Adjust font size */
+    z-index: 10; /* Ensure text is above the image */
+}
+
+/* Apply gradient overlay */
+.header-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 99%; /* Cover the entire height of the container */
+    background: linear-gradient(to bottom, rgba(8, 8, 8, 0.4), rgba(8, 8, 8, 0.4)); /* Gradient from semi-transparent black to transparent */
+    z-index: 5; /* Ensure the overlay is behind the text */
+}
+.header-image-text p {
+    color: white;
+    font-size: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight: 100;
+}
+@media (max-width: 2000px) {
+    .header-image img {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+    }
+}
+@media (max-width: 1000px) {
+    .header-image img {
+        width: 100%;
+        height: 30vh;
+        overflow: hidden;
+    }
+}
+/* ==================== header image ends =================== */
+
+/* ================= contact section ============================= */
+.contact-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows the divs to wrap when needed */
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.contact-section .map, 
+.contact-section .contact-info, 
+.contact-section .contact-form {
+    width: 300px; /* Sets the initial width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    height: auto;
+    margin: 10px;
+}
+
+.contact-section .map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.contact-section .contact-info, 
+.contact-section .contact-form {
+    padding: 10px;
+    text-align: center;
+}
+
+.contact-section .contact-info  h3{
+    margin-top: -10px;
+    text-align: justify;
+}
+.contact-section .contact-form h3{
+    margin-top: -10px;
+}
+.contact-section .contact-info p {
+    color: gray;
+    font-size: 13px;
+    text-align: justify;
+}
+
+.contact-section .contact-form form {
+    padding: 8px;
+}
+
+.contact-section .contact-form form input,
+.contact-section .contact-form form textarea {
+    width: 90%;
+    padding: 13px;
+    margin: 6px;
+    border: 0.5px solid rgb(214, 211, 211);
+    background-color: #e6e9ec;
+}
+
+.contact-section .contact-form form button {
+    width: 100px;
+    padding: 11px;
+    border: transparent;
+    color: #1B5191;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Media query for screens 800px and below */
+@media (max-width: 800px) {
+    .contact-section {
+        display: block;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        padding: 10px;
+    }
+    .contact-section .map,
+    .contact-section .contact-info,
+    .contact-section .contact-form {
+        width: 100%; /* Ensure each takes full width when stacked */
+        margin: auto;
+    }
+    .contact-section .contact-info h3 {
+        margin-top: 10px;
+    }
+    .contact-section .contact-info p {
+        font-size: 13px;
+        /* margin-top: -5px; */
+    }
+    .contact-section .contact-form form input,
+    .contact-section .contact-form form textarea {
+        width: 90%;
+    }
+}
+
+/* ========== staff section =============== */
+/* General styles for the staff section */
+.staff-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+.staff-section .staff-text{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.staff-section .staff-text p{
+    text-align: justify;
+    color: gray;
+}
+/* Individual staff boxes */
+.staff-box {
+    flex: 1 1 calc(33.333% - 40px); /* Flexible basis with spacing */
+    margin: 10px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 70px;
+}
+
+/* Staff image styling */
+.staff-box .staff img {
+    width: 100%;
+    max-width: 300px;
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Staff details styling */
+.staff-box .staff h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.staff-box .staff p.md {
+    font-weight: bold;
+    color: #555;
+}
+
+.staff-box .staff p {
+    text-align: left;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .staff-box {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .staff-box {
+        flex: 1 1 100%;
+    }
+}
+
+/* ======================= accordian ======================= */
+.accordion-section {
+    width: 80%;
+    margin: auto;
+}
+.accordion-section .accordion-text h4{
+    color: gray;
+}
+.accordion-item {
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordion-header:hover {
+    background-color: #e0e0e0;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-item.active .arrow {
+    transform: rotate(90deg);
+}
+
+
+/* ========================== accordian ends =================== */

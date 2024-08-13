@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./static/css/style2.css">
+    </head>
+
+    <body> 
+        <!-- =================== Header/Nav ===============  -->
+         <header>
+            <div class="header-container">
+                <input type="checkbox" name="" id="check">
+                
+                <div class="logo-container">
+                    <span><a href="index.html"><img class="aex" src="./static/images/logo.png"></a></span>
+                </div>
+    
+                <div class="nav-btn">
+                    <div class="nav-links">
+                        <ul>
+                            <li class="nav-link" style="--i: .6s">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="nav-link" style="--i: .85s">
+                                <a href="#">About<i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown">
+                                    <ul>
+                                        <li class="dropdown-link">
+                                            <a href="company_profile.html">AEX Company Profile</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="mission.html">Mission & Values</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="staff.html">Staff & Organization</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="quality.html">Quality Control</a> 
+                                        </li>
+                                        <div class="arrow"></div> 
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-link" style="--i: .85s">
+                                <a href="#">Divisions<i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown">
+                                    <ul>
+                                        <li class="dropdown-link">
+                                            <a href="strategic-business.html">Finance </a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="infrastructure-design.html">Infrastructure </a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="architectural-design.html">Architectural Design </a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="construction-supervision.html">Construction Supervision </a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="clients-representation.html">Project Management </a>
+                                        </li>
+                                        <div class="arrow"></div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-link" style="--i: 1.1s">
+                                <a href="">Services<i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown">
+                                    <ul>
+                                        <li class="dropdown-link">
+                                            <a href="architecture.html">Architecture</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="design-reviews.html">Design Review</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="electro-mechanical.html">Electro Mechanical</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="engineering-consultancy.html">Engineering Consultancy</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="environment-impact.html">Environmental Impact Studies</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="expertise-reports.html">Expertise Reports</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="feasibility-studies.html">Feasibility Studies</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="leed-energy.html">LEED/Sustainable Energy</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="shop-drawing.html">Shop Drawings</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="site-management.html">Site Management & Supervision</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="tender-procurement.html">Tender & Procurement</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="urban-planning.html">Urban Planning/Infrastructure</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="value-engineering.html">Value Engineering</a>
+                                        </li>
+                                        <div class="arrow"></div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-link" style="--i: .85s">
+                                <a href="#">Clients<i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown">
+                                    <ul>
+                                        <li class="dropdown-link">
+                                            <a href="contractors.html">Contractors</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="government.html">Government & Authorities</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="developers.html">Developers</a>
+                                        </li>
+                                        <li class="dropdown-link">
+                                            <a href="investors.html">Investor</a>
+                                        </li>
+                                        <div class="arrow"></div>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-link" style="--i: 1.35s">
+                                <a href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hamburger-menu-container">
+                    <div class="hamburger-menu">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+         </header>
+    
+    <section class="accordion-section">
+        <p>sjsjsjsjsjsjsjsj</p>
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>New Look</span>
+                <span class="arrow">&#9654;</span>
+            </div>
+            <div class="accordion-content">
+                <p>I have a new look</p>
+            </div>
+        </div>
+        <!-- Add more accordion items as needed -->
+    </section>
+    </body>
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+        const accordionItem = header.parentElement;
+        const isActive = accordionItem.classList.contains('active');
+
+        // Close all accordion items
+        document.querySelectorAll('.accordion-item').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Toggle the clicked accordion item
+        if (!isActive) {
+            accordionItem.classList.add('active');
+        }
+    });
+});
+
+    </script>
+</html>
