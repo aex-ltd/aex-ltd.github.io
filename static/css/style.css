@@ -103,14 +103,14 @@ header{
 
 .header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link > a{
     display: flex;
-    background-color:#1B5191;
+    background-color:#bec0c0;
     color: white;
     padding: 3px;
     font-size: 15px;
     align-items: center;
     justify-content: space-between;
     transition: .3s;
-    border: 1px solid #1B5191; /* Border color to match background */
+    border: 1px solid #9b9c9c; /* Border color to match background */
     /* border-radius: 4px; Optional: adds rounded corners to the border */
 }
 
@@ -257,10 +257,10 @@ header{
         position: absolute;
         height: calc(100vh - 3rem);
         top: 4rem;
-        left: 0;
+        margin-left: 350px;
         width: 100%;
         height: auto;
-        background-color: #1B5191;
+        background-color: #9b9c9c;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
@@ -269,7 +269,6 @@ header{
         transform: translateX(100%);
         transition: .65s;
         z-index: 1200;
-        /* padding-top: 4rem; */
     }
 
     .header-container #check:checked ~ .nav-btn{
@@ -339,7 +338,7 @@ header{
         background-color: white;
         margin: 4px;
         width: auto;
-        color: #1B5191;
+        color: black;
         font-size: 14px;
     }
 
@@ -356,6 +355,129 @@ header{
     .header-container .nav-btn .nav-links .dropdown i{
         font-size: 1rem;
         transition: .7s;
+    }
+}
+@media (max-width: 700px){ 
+
+    .header-container .hamburger-menu-container{
+        display: flex;
+    }
+
+    .header-container #check{
+        display: block;
+    }
+
+    .header-container .logo-container img{
+        width: 90px;
+        height: 40px;
+    }
+
+    .header-container .nav-btn{
+        position: absolute;
+        height: calc(100vh - 3rem);
+        top: 4rem;
+        margin-left: 180px;
+        width: 100%;
+        height: auto;
+        /* background-color: #710ad1; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: .65s;
+        z-index: 1200;
+    }
+
+    .header-container #check:checked ~ .nav-btn{
+        transform: translateX(0);
+    }
+
+    .header-container #check:checked ~ .nav-btn .nav-link,
+    .header-container #check:checked ~ .nav-btn .log-sign{
+        animation: animation .5s ease forwards var(--i);
+    }
+
+    .header-container .nav-btn .nav-links{
+        flex: initial;
+        width: 100%;
+    }
+
+    .header-container .nav-btn .nav-links > ul{
+        flex-direction: column;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link{
+        width: 100%;
+        opacity: 0;
+        /* border: 0.4px solid rgb(20, 17, 173); */
+        /* transform: translateY(15px); */
+    }
+
+    .header-container .nav-btn .nav-links .nav-link > a{
+        line-height: 1;
+        padding: 3px;
+        margin: 5px;
+        color: white;
+        font-weight: bold;
+        text-align: justify;
+        font-size: 14px;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link:hover > a{
+        /* transform: scale(1); */
+        /* padding: 1px; */
+        width: 40%;
+        color: white;
+
+    }
+
+    .header-container .nav-btn .nav-links .nav-link .dropdown{
+        position: initial;
+        top: initial;
+        left: initial;
+        transform: initial;
+        opacity: 1;
+        pointer-events: auto;
+        width: auto;
+        padding: 4;
+        display: none;
+    }
+    
+    .header-container .nav-btn .nav-links .nav-link:hover > .dropdown,
+    .header-container .nav-btn .nav-links .nav-link .dropdown .dropdown-link:hover > .dropdown{
+        display: block;
+        margin-left: -50px;
+    }    
+    .header-container .nav-btn .nav-links .dropdown .dropdown-link:not(:nth-last-child(2)){
+        border-bottom: none;
+    }
+    .header-container .nav-btn .nav-links .dropdown .dropdown-link:hover > a{
+        background-color: white;
+        margin: 4px;
+        width: auto;
+        color: black;
+        font-size: 14px;
+    }
+
+    .header-container .nav-btn .nav-links .dropdown .dropdown-link:first-child:hover ~ .arrow{
+        background-color: white;
+    }
+
+    .header-container .nav-btn .nav-links .nav-link > a > i{
+        font-size: 1.1rem;
+        /* transform: rotate(-90deg); */
+        transition: .7s;
+    }
+
+    .header-container .nav-btn .nav-links .dropdown i{
+        font-size: 1rem;
+        transition: .7s;
+    }
+    .logo-container img{
+        width: 60px;
+        height: 40px;
     }
 }
 
