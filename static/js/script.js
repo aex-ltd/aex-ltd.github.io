@@ -120,19 +120,111 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // ================= accordion============
-document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-        const accordionItem = header.parentElement;
-        const isActive = accordionItem.classList.contains('active');
+// document.querySelectorAll('.accordion-header').forEach(header => {
+//     header.addEventListener('click', () => {
+//         const accordionItem = header.parentElement;
+//         const isActive = accordionItem.classList.contains('active');
 
-        // Close all accordion items
-        document.querySelectorAll('.accordion-item').forEach(item => {
-            item.classList.remove('active');
+//         // Close all accordion items
+//         document.querySelectorAll('.accordion-item').forEach(item => {
+//             item.classList.remove('active');
+//         });
+
+//         // Toggle the clicked accordion item
+//         if (!isActive) {
+//             accordionItem.classList.add('active');
+//         }
+//     });
+// });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Function to handle accordion toggle
+//     const handleAccordionToggle = (accordionSelector, contentSelector, arrowSelector) => {
+//         document.querySelectorAll(accordionSelector).forEach(header => {
+//             header.addEventListener('click', function() {
+//                 const item = this.parentElement;
+//                 const isActive = item.classList.contains('active');
+
+//                 // Close all items
+//                 document.querySelectorAll(accordionSelector).forEach(accordion => {
+//                     accordion.parentElement.classList.remove('active');
+//                 });
+//                 document.querySelectorAll(arrowSelector).forEach(arrow => {
+//                     arrow.style.transform = '';
+//                 });
+
+//                 // Toggle clicked item
+//                 if (!isActive) {
+//                     item.classList.add('active');
+//                     this.querySelector(arrowSelector).style.transform = 'rotate(90deg)';
+//                 }
+//             });
+//         });
+//     };
+
+//     // Initialize main accordions
+//     handleAccordionToggle('.accordion-header', '.accordion-content', '.arrow');
+
+//     // Initialize nested accordions within each accordion content
+//     document.querySelectorAll('.accordion-content').forEach(content => {
+//         handleAccordionToggle('.nested-accordion-header', '.nested-accordion-content', '.nested-arrow');
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const initAccordions = () => {
+        // Function to handle main accordion toggle
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.closest('.accordion-item');
+                const isActive = item.classList.contains('active');
+
+                // Close all main accordions
+                document.querySelectorAll('.accordion-item').forEach(accordion => {
+                    accordion.classList.remove('active');
+                    accordion.querySelector('.accordion-content').style.display = 'none';
+                    accordion.querySelector('.arrow').style.transform = '';
+                });
+
+                // Toggle clicked accordion item
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.accordion-content').style.display = 'block';
+                    item.querySelector('.arrow').style.transform = 'rotate(90deg)';
+                }
+
+                // Reinitialize nested accordions for the active main accordion
+                initNestedAccordions(item);
+            });
         });
+    };
 
-        // Toggle the clicked accordion item
-        if (!isActive) {
-            accordionItem.classList.add('active');
-        }
-    });
+    const initNestedAccordions = (accordionItem) => {
+        // Function to handle nested accordion toggle
+        accordionItem.querySelectorAll('.nested-accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const item = this.closest('.nested-accordion-item');
+                const isActive = item.classList.contains('active');
+
+                // Close all nested accordions within the same main accordion
+                item.parentElement.querySelectorAll('.nested-accordion-item').forEach(nestedAccordion => {
+                    nestedAccordion.classList.remove('active');
+                    nestedAccordion.querySelector('.nested-accordion-content').style.display = 'none';
+                    nestedAccordion.querySelector('.nested-arrow').style.transform = '';
+                });
+
+                // Toggle clicked nested accordion item
+                if (!isActive) {
+                    item.classList.add('active');
+                    item.querySelector('.nested-accordion-content').style.display = 'block';
+                    item.querySelector('.nested-arrow').style.transform = 'rotate(90deg)';
+                }
+            });
+        });
+    };
+
+    // Initialize all accordions on page load
+    initAccordions();
 });
+
+    

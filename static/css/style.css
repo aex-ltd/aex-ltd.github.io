@@ -1733,11 +1733,12 @@ header{
 }
 
 /* ======================= accordian ======================= */
+
 .accordion-section {
     width: 80%;
     margin: auto;
 }
-.accordion-section .accordion-text h4{
+.accordion-section .accordion-text p{
     color: gray;
 }
 .accordion-item {
@@ -1754,10 +1755,6 @@ header{
     background-color: #f7f7f7;
     cursor: pointer;
     user-select: none;
-}
-
-.accordion-header:hover {
-    background-color: #e0e0e0;
 }
 
 .accordion-content {
@@ -1779,5 +1776,46 @@ header{
     transform: rotate(90deg);
 }
 
+/* Nested Accordion Styles */
+.nested-accordion {
+    margin-top: 10px;
+}
+
+.nested-accordion-item {
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.nested-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    user-select: none;
+}
+.nested-accordion-header span b {
+    font-size: 14px;
+}
+.nested-accordion-content {
+    display: none;
+    padding: 8px;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.nested-arrow {
+    transition: transform 0.3s;
+}
+
+.nested-accordion-item.active .nested-accordion-content {
+    display: block;
+}
+
+.nested-accordion-item.active .nested-arrow {
+    transform: rotate(90deg);
+}
 
 /* ========================== accordian ends =================== */
